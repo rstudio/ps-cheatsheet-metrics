@@ -140,7 +140,7 @@ visits_log <- visits_log |>
 
 ```
 
-**`r nrow(visits_log)` visits since `r min(visits_log$date)`**
+**Total visitors: `r nrow(visits_log)` visits since `r min(visits_log$date)`**
 
 <br>
 
@@ -149,7 +149,7 @@ visits_log <- visits_log |>
 #| warning: false
 #| error: false
 #| eval: !expr should_i_process
-#| column: page
+#| column: body
 #| fig-width: 8
 #| fig-asp: 0.562
 #| out-width: 100%
@@ -168,7 +168,8 @@ visits_log |>
     subtitle = "<span style ='color:#404041;'>Customers will be <b><span style = 'color:#EE6331;'>Anonymous visitors</span></b>. Posit employess visiting while logged<br>into Connect will be <b><span style = 'color:#447099;'>Named visitors</span></b>, otherwise they will be anonymous, too.</span>"
   ) +
   scale_color_manual(
-    values = c("#447099","#EE6331"),
+    limits = c("Anonymous", "Named"),
+    values = c("#EE6331", "#447099"),
     guide = "none"
   ) +
   theme_minimal() +
@@ -186,12 +187,49 @@ visits_log |>
 #| warning: false
 #| error: false
 #| eval: !expr should_i_process
-#| column: page
+#| column: body
+#| fig-asp: 0.4
+#| layout-nrow: 1
 
-reactable(
-  visits_log,
-  filterable = TRUE,
-  sortable = TRUE
-)
+visits_log |>
+  ggplot(aes(visitor)) +
+  geom_bar(aes(fill = visitor), width = .25) +
+  scale_fill_manual(
+    limits = c("Anonymous", "Named"),
+    values = c("#EE6331", "#447099"),
+    aesthetics = "fill",
+    guide = "none"
+  ) +
+  labs(
+    x= NULL,
+    y = NULL,
+    title = "**Total Visitors**"
+  ) +
+  coord_flip() +
+  theme_minimal(base_size = 21) +
+  theme(
+    plot.title = element_markdown(lineheight = 1.6),
+    panel.grid = element_blank()
+  )
+
+day_limits <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+day_labels <- c("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su")
+
+visits_log |>
+  mutate(weekday = factor(weekday, levels = day_limits, labels = day_labels)) |> 
+  count(weekday) |> 
+  ggplot(aes(x = weekday, y = n)) +
+  geom_col(fill = "#404041", width = .25) +
+  scale_x_discrete(limits = day_labels, labels = day_labels) +
+  labs(
+    x= NULL,
+    y = NULL,
+    title = "**Visitors by weekday**"
+  ) +
+  theme_minimal(base_size = 21) +
+  theme(
+    plot.title = element_markdown(lineheight = 1.6),
+    panel.grid = element_blank()
+  )
+
 ```
-
