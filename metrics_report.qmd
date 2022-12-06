@@ -147,7 +147,6 @@ visits_log <- visits_log |>
 #| error: false
 #| eval: !expr should_i_process
 #| column: page
-#| fig-asp: .5625
 #| fig-width: 8
 #| out-width: 100%
 
