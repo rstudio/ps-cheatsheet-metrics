@@ -8,8 +8,9 @@ engine: knitr
 editor_options: 
   chunk_output_type: console
 ---
+data pulled at `r format(Sys.time(), tz='America/New_York', usetz = TRUE)`
 
-## How many people are visiting the public sector cheatsheet?
+### How many people are visiting the public sector cheatsheet?
 
 ```{r}
 #| echo: false
@@ -21,6 +22,8 @@ library(httr)
 library(tidyverse)
 library(lubridate)
 library(reactable)
+library(ggtext)
+library(glue)
 
 should_i_process <- FALSE # to make a conditional chunk later on
 ```
@@ -117,10 +120,10 @@ visits_log <- map_dfr(
     )
   )
 
-# missing user IDs means anonymous viewers, aka, outside Posit
-# let's add user names and refer to anons as customers
+# missing user IDs means anonymous viewers, 
+# let's refer to anonymous and named
 visits_log <- visits_log |> 
-  mutate(visitor = if_else(!is.na(user_guid), "Posit", "Customer")) |> 
+  mutate(visitor = if_else(!is.na(user_guid), "Named", "Anonymous")) |> 
   select(visitor, time)
 
 # convert to ET time and use just days, not hours and minutes
@@ -148,7 +151,9 @@ visits_log <- visits_log |>
 #| eval: !expr should_i_process
 #| column: page
 #| fig-width: 8
+#| fig-asp: 0.562
 #| out-width: 100%
+
 
 visits_log |> 
   count(date, visitor) |> 
@@ -157,10 +162,20 @@ visits_log |>
   geom_line(aes(group = visitor)) +
   geom_point(aes(color = visitor)) +
   labs(
-    title = "Page visits on the Public Sector Cheatsheet",
-    subtitle = "by day"
+    x = NULL,
+    y = NULL,
+    title = "**Page visits on the Public Sector Cheatsheet by day**",
+    subtitle = "<span style ='color:#404041;'>Customers will be <b><span style = 'color:#EE6331;'>Anonymous visitors</span></b>. Posit employess visiting while logged<br>into Connect will be <b><span style = 'color:#447099;'>Named visitors</span></b>, otherwise they will be anonymous, too.</span>"
   ) +
-  theme_minimal()
+  scale_color_manual(
+    values = c("#447099","#EE6331"),
+    guide = "none"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_markdown(lineheight = 1.6),
+    plot.subtitle = element_markdown(lineheight = 1.2)
+  )
 
 ```
 
