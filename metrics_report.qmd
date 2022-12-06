@@ -140,7 +140,7 @@ visits_log <- visits_log |>
 
 ```
 
-**Total visitors: `r nrow(visits_log)` visits since `r min(visits_log$date)`**
+Total visitors: `r nrow(visits_log)` visits since `r min(visits_log$date)`
 
 <br>
 
@@ -224,7 +224,7 @@ visits_log |>
   labs(
     x= NULL,
     y = NULL,
-    title = "**Visitors by weekday**"
+    title = "**Visitors by Weekday**"
   ) +
   theme_minimal(base_size = 21) +
   theme(
