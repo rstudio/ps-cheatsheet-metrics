@@ -156,6 +156,32 @@
         "Built": "R 4.1.0; ; 2022-04-04 10:49:42 UTC; unix"
       }
     },
+    "Rcpp": {
+      "Source": "REPO_NAME",
+      "Repository": "https://colorado.rstudio.com/rspm/all/__linux__/bionic/latest",
+      "description": {
+        "Package": "Rcpp",
+        "Title": "Seamless R and C++ Integration",
+        "Version": "1.0.9",
+        "Date": "2022-07-02",
+        "Author": "Dirk Eddelbuettel, Romain Francois, JJ Allaire, Kevin Ushey, Qiang Kou,\n Nathan Russell, Inaki Ucar, Douglas Bates and John Chambers",
+        "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
+        "Description": "The 'Rcpp' package provides R functions as well as C++ classes which\n offer a seamless integration of R and C++. Many R data types and objects can be\n mapped back and forth to C++ equivalents which facilitates both writing of new\n code as well as easier integration of third-party libraries. Documentation\n about 'Rcpp' is provided by several vignettes included in this package, via the\n 'Rcpp Gallery' site at <https://gallery.rcpp.org>, the paper by Eddelbuettel and\n Francois (2011, <doi:10.18637/jss.v040.i08>), the book by Eddelbuettel (2013,\n <doi:10.1007/978-1-4614-6868-4>) and the paper by Eddelbuettel and Balamuta (2018,\n <doi:10.1080/00031305.2017.1375990>); see 'citation(\"Rcpp\")' for details.",
+        "Imports": "methods, utils",
+        "Suggests": "tinytest, inline, rbenchmark, pkgKitten (>= 0.1.2)",
+        "URL": "https://www.rcpp.org,\nhttps://dirk.eddelbuettel.com/code/rcpp.html,\nhttps://github.com/RcppCore/Rcpp",
+        "License": "GPL (>= 2)",
+        "BugReports": "https://github.com/RcppCore/Rcpp/issues",
+        "MailingList": "rcpp-devel@lists.r-forge.r-project.org",
+        "RoxygenNote": "6.1.1",
+        "NeedsCompilation": "yes",
+        "Packaged": "2022-07-02 15:34:02 UTC; edd",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-07-08 23:10:06 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.1.0; x86_64-pc-linux-gnu; 2022-07-11 11:11:37 UTC; unix"
+      }
+    },
     "askpass": {
       "Source": "REPO_NAME",
       "Repository": "https://colorado.rstudio.com/rspm/all/__linux__/bionic/latest",
@@ -568,6 +594,32 @@
         "Date/Publication": "2022-02-21 09:50:02 UTC",
         "Encoding": "UTF-8",
         "Built": "R 4.1.0; x86_64-pc-linux-gnu; 2022-02-22 10:58:49 UTC; unix"
+      }
+    },
+    "commonmark": {
+      "Source": "REPO_NAME",
+      "Repository": "https://colorado.rstudio.com/rspm/all/__linux__/bionic/latest",
+      "description": {
+        "Package": "commonmark",
+        "Type": "Package",
+        "Title": "High Performance CommonMark and Github Markdown Rendering in R",
+        "Version": "1.8.1",
+        "Authors@R": "c(\n    person(\"Jeroen\", \"Ooms\", ,\"jeroen@berkeley.edu\", role = c(\"aut\", \"cre\"),\n        comment = c(ORCID = \"0000-0002-4035-0289\")),\n    person(\"John MacFarlane\", role = \"cph\", comment = \"Author of cmark\"))",
+        "URL": "https://docs.ropensci.org/commonmark/ (docs)\nhttps://github.com/r-lib/commonmark (devel)\nhttps://github.github.com/gfm/ (spec)",
+        "BugReports": "https://github.com/r-lib/commonmark/issues",
+        "Description": "The CommonMark specification defines a rationalized version of markdown\n    syntax. This package uses the 'cmark' reference implementation for converting\n    markdown text into various formats including html, latex and groff man. In\n    addition it exposes the markdown parse tree in xml format. Also includes opt-in\n    support for GFM extensions including tables, autolinks, and strikethrough text.",
+        "License": "BSD_2_clause + file LICENSE",
+        "Suggests": "curl, testthat, xml2",
+        "RoxygenNote": "7.1.2",
+        "Language": "en-US",
+        "Encoding": "UTF-8",
+        "NeedsCompilation": "yes",
+        "Packaged": "2022-10-14 12:04:12 UTC; jeroen",
+        "Author": "Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>),\n  John MacFarlane [cph] (Author of cmark)",
+        "Maintainer": "Jeroen Ooms <jeroen@berkeley.edu>",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-10-14 12:42:33 UTC",
+        "Built": "R 4.1.0; x86_64-pc-linux-gnu; 2022-10-17 12:31:09 UTC; unix"
       }
     },
     "cpp11": {
@@ -1084,6 +1136,34 @@
         "Built": "R 4.1.0; ; 2022-11-07 10:58:39 UTC; unix"
       }
     },
+    "ggtext": {
+      "Source": "REPO_NAME",
+      "Repository": "https://colorado.rstudio.com/rspm/all/__linux__/bionic/latest",
+      "description": {
+        "Package": "ggtext",
+        "Type": "Package",
+        "Title": "Improved Text Rendering Support for 'ggplot2'",
+        "Version": "0.1.2",
+        "Authors@R": "\n    c(\n      person(\n        given = \"Claus O.\",\n        family = \"Wilke\",\n        role = c(\"aut\"),\n        email = \"wilke@austin.utexas.edu\",\n        comment = c(ORCID = \"0000-0002-7470-9261\")\n      ),\n      person(\n        given = \"Brenton M.\",\n        family = \"Wiernik\",\n        role = c(\"aut\", \"cre\"),\n        email = \"brenton@wiernik.org\",\n        comment = c(ORCID = \"0000-0001-9560-6336\", Twitter = \"@bmwiernik\")\n      )\n    )",
+        "Description": "A 'ggplot2' extension that enables the rendering of\n    complex formatted plot labels (titles, subtitles, facet labels,\n    axis labels, etc.). Text boxes with automatic word wrap are also\n    supported.",
+        "URL": "https://wilkelab.org/ggtext/",
+        "BugReports": "https://github.com/wilkelab/ggtext/issues",
+        "License": "GPL-2",
+        "Depends": "R (>= 3.5)",
+        "Imports": "ggplot2 (>= 3.3.0), grid, gridtext, rlang, scales",
+        "Suggests": "cowplot, dplyr, glue, knitr, rmarkdown, testthat, vdiffr",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.1.1",
+        "VignetteBuilder": "knitr",
+        "NeedsCompilation": "no",
+        "Packaged": "2022-09-15 13:50:50 UTC; brentonw",
+        "Author": "Claus O. Wilke [aut] (<https://orcid.org/0000-0002-7470-9261>),\n  Brenton M. Wiernik [aut, cre] (<https://orcid.org/0000-0001-9560-6336>,\n    @bmwiernik)",
+        "Maintainer": "Brenton M. Wiernik <brenton@wiernik.org>",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-09-16 11:36:07 UTC",
+        "Built": "R 4.1.0; ; 2022-09-19 11:00:40 UTC; unix"
+      }
+    },
     "glue": {
       "Source": "REPO_NAME",
       "Repository": "https://colorado.rstudio.com/rspm/all/__linux__/bionic/latest",
@@ -1172,6 +1252,35 @@
         "Repository": "RSPM",
         "Date/Publication": "2022-08-13 20:10:02 UTC",
         "Built": "R 4.1.0; ; 2022-08-15 11:01:12 UTC; unix"
+      }
+    },
+    "gridtext": {
+      "Source": "REPO_NAME",
+      "Repository": "https://colorado.rstudio.com/rspm/all/__linux__/bionic/latest",
+      "description": {
+        "Package": "gridtext",
+        "Type": "Package",
+        "Title": "Improved Text Rendering Support for 'Grid' Graphics",
+        "Version": "0.1.5",
+        "Authors@R": "\n    c(\n      person(\n        given = \"Claus O.\",\n        family = \"Wilke\",\n        role = c(\"aut\"),\n        email = \"wilke@austin.utexas.edu\",\n        comment = c(ORCID = \"0000-0002-7470-9261\")\n      ),\n      person(\n        given = \"Brenton M.\",\n        family = \"Wiernik\",\n        role = c(\"aut\", \"cre\"),\n        email = \"brenton@wiernik.org\",\n        comment = c(ORCID = \"0000-0001-9560-6336\", Twitter = \"@bmwiernik\")\n      )\n    )",
+        "Description": "Provides support for rendering of formatted text using 'grid' graphics. Text can be\n    formatted via a minimal subset of 'Markdown', 'HTML', and inline 'CSS' directives, and it can be\n    rendered both with and without word wrap.",
+        "URL": "https://wilkelab.org/gridtext/",
+        "BugReports": "https://github.com/wilkelab/gridtext/issues",
+        "License": "MIT + file LICENSE",
+        "Depends": "R (>= 3.5)",
+        "Imports": "curl, grid, grDevices, markdown, rlang, Rcpp, png, jpeg,\nstringr, xml2",
+        "Suggests": "covr, knitr, rmarkdown, testthat, vdiffr",
+        "LinkingTo": "Rcpp",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.1.1",
+        "SystemRequirements": "C++11",
+        "NeedsCompilation": "yes",
+        "Packaged": "2022-09-15 13:49:42 UTC; brentonw",
+        "Author": "Claus O. Wilke [aut] (<https://orcid.org/0000-0002-7470-9261>),\n  Brenton M. Wiernik [aut, cre] (<https://orcid.org/0000-0001-9560-6336>,\n    @bmwiernik)",
+        "Maintainer": "Brenton M. Wiernik <brenton@wiernik.org>",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-09-16 11:16:15 UTC",
+        "Built": "R 4.1.0; x86_64-pc-linux-gnu; 2022-09-19 10:59:18 UTC; unix"
       }
     },
     "gtable": {
@@ -1431,6 +1540,29 @@
         "Built": "R 4.1.0; x86_64-pc-linux-gnu; 2022-10-07 11:02:18 UTC; unix"
       }
     },
+    "jpeg": {
+      "Source": "REPO_NAME",
+      "Repository": "https://colorado.rstudio.com/rspm/all/__linux__/bionic/latest",
+      "description": {
+        "Package": "jpeg",
+        "Version": "0.1-10",
+        "Title": "Read and write JPEG images",
+        "Author": "Simon Urbanek <Simon.Urbanek@r-project.org>",
+        "Maintainer": "Simon Urbanek <Simon.Urbanek@r-project.org>",
+        "Depends": "R (>= 2.9.0)",
+        "Description": "This package provides an easy and simple way to read, write and display bitmap images stored in the JPEG format. It can read and write both files and in-memory raw vectors.",
+        "License": "GPL-2 | GPL-3",
+        "SystemRequirements": "libjpeg",
+        "URL": "https://www.rforge.net/jpeg/",
+        "BugReports": "https://github.com/s-u/jpeg/issues",
+        "NeedsCompilation": "yes",
+        "Packaged": "2022-11-29 09:23:09 UTC; rforge",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-11-29 11:12:52 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.1.0; x86_64-pc-linux-gnu; 2022-11-30 11:03:02 UTC; unix"
+      }
+    },
     "jquerylib": {
       "Source": "REPO_NAME",
       "Repository": "https://colorado.rstudio.com/rspm/all/__linux__/bionic/latest",
@@ -1654,6 +1786,34 @@
         "Repository": "RSPM",
         "Date/Publication": "2022-03-30 07:30:09 UTC",
         "Built": "R 4.1.0; x86_64-pc-linux-gnu; 2022-03-31 11:03:36 UTC; unix"
+      }
+    },
+    "markdown": {
+      "Source": "REPO_NAME",
+      "Repository": "https://colorado.rstudio.com/rspm/all/__linux__/bionic/latest",
+      "description": {
+        "Package": "markdown",
+        "Type": "Package",
+        "Title": "Render Markdown with 'commonmark'",
+        "Version": "1.4",
+        "Authors@R": "c(\n   person(\"JJ\", \"Allaire\", role = \"aut\"),\n   person(\"Jeffrey\", \"Horner\", role = \"aut\"),\n   person(\"Yihui\", \"Xie\", role = c(\"aut\", \"cre\"), email = \"xie@yihui.name\", comment = c(ORCID = \"0000-0003-0645-5666\")),\n   person(\"Henrik\", \"Bengtsson\", role = \"ctb\"),\n   person(\"Jim\", \"Hester\", role = \"ctb\"),\n   person(\"Yixuan\", \"Qiu\", role = \"ctb\"),\n   person(\"Kohske\", \"Takahashi\", role = \"ctb\"),\n   person(\"Adam\", \"November\", role = \"ctb\"),\n   person(\"Nacho\", \"Caballero\", role = \"ctb\"),\n   person(\"Jeroen\", \"Ooms\", role = \"ctb\"),\n   person(\"Thomas\", \"Leeper\", role = \"ctb\"),\n   person(\"Joe\", \"Cheng\", role = \"ctb\"),\n   person(\"Andrzej\", \"Oles\", role = \"ctb\"),\n   person(family = \"RStudio\", role = \"cph\")\n   )",
+        "Description": "Render Markdown to full HTML documents with the 'commonmark'\n    package. Markdown is a plain-text formatting\n    syntax that can be converted to 'XHTML' or other formats. See\n    <https://en.wikipedia.org/wiki/Markdown> for more information about Markdown.",
+        "Depends": "R (>= 2.11.1)",
+        "Imports": "utils, commonmark, xfun, mime (>= 0.3)",
+        "Suggests": "knitr, rmarkdown (>= 2.18), yaml, RCurl",
+        "License": "GPL-2",
+        "URL": "https://github.com/rstudio/markdown",
+        "BugReports": "https://github.com/rstudio/markdown/issues",
+        "VignetteBuilder": "knitr",
+        "RoxygenNote": "7.2.1",
+        "Encoding": "UTF-8",
+        "NeedsCompilation": "no",
+        "Packaged": "2022-11-15 06:07:44 UTC; yihui",
+        "Author": "JJ Allaire [aut],\n  Jeffrey Horner [aut],\n  Yihui Xie [aut, cre] (<https://orcid.org/0000-0003-0645-5666>),\n  Henrik Bengtsson [ctb],\n  Jim Hester [ctb],\n  Yixuan Qiu [ctb],\n  Kohske Takahashi [ctb],\n  Adam November [ctb],\n  Nacho Caballero [ctb],\n  Jeroen Ooms [ctb],\n  Thomas Leeper [ctb],\n  Joe Cheng [ctb],\n  Andrzej Oles [ctb],\n  RStudio [cph]",
+        "Maintainer": "Yihui Xie <xie@yihui.name>",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-11-16 12:10:42 UTC",
+        "Built": "R 4.1.0; ; 2022-11-17 10:58:07 UTC; unix"
       }
     },
     "memoise": {
@@ -1897,6 +2057,28 @@
         "Repository": "RSPM",
         "Date/Publication": "2019-09-22 09:20:02 UTC",
         "Built": "R 4.1.0; ; 2021-05-18 23:23:48 UTC; unix"
+      }
+    },
+    "png": {
+      "Source": "REPO_NAME",
+      "Repository": "https://colorado.rstudio.com/rspm/all/__linux__/bionic/latest",
+      "description": {
+        "Package": "png",
+        "Version": "0.1-8",
+        "Title": "Read and write PNG images",
+        "Author": "Simon Urbanek <Simon.Urbanek@r-project.org>",
+        "Maintainer": "Simon Urbanek <Simon.Urbanek@r-project.org>",
+        "Depends": "R (>= 2.9.0)",
+        "Description": "This package provides an easy and simple way to read, write and display bitmap images stored in the PNG format. It can read and write both files and in-memory raw vectors.",
+        "License": "GPL-2 | GPL-3",
+        "SystemRequirements": "libpng",
+        "URL": "http://www.rforge.net/png/",
+        "NeedsCompilation": "yes",
+        "Packaged": "2022-11-29 09:42:31 UTC; rforge",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-11-29 11:12:53 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.1.0; x86_64-pc-linux-gnu; 2022-11-30 11:03:02 UTC; unix"
       }
     },
     "prettyunits": {
@@ -3005,16 +3187,10 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "9f1383c750542cd38d1b8847dab4d09c"
+      "checksum": "6eeb120fdcc1308fa4ad863e3ed2f8f2"
     },
     "metrics_report_files/figure-html/unnamed-chunk-7-1.png": {
-      "checksum": "39dedb24d89d7ff5d54da7338e5dcb9c"
-    },
-    "metrics_report_files/figure-html/unnamed-chunk-8-1.png": {
-      "checksum": "10f3d3adf02666f0652384bb7e79709b"
-    },
-    "metrics_report_files/figure-html/unnamed-chunk-9-1.png": {
-      "checksum": "3de69a26b4740e66b7c91667351cb7f4"
+      "checksum": "2327356e7959f497b719b91640f53b99"
     },
     "metrics_report_files/libs/bootstrap/bootstrap-icons.css": {
       "checksum": "3104c106b6c22560ae274d7c56f116c5"
@@ -3104,13 +3280,13 @@
       "checksum": "c9abc6cd72ad9181e9dc94b538399237"
     },
     "metrics_report.html": {
-      "checksum": "ccbb20e2fe085fe38ad44b7fe7b1e1df"
+      "checksum": "1d5e633a9bbe677838b7e8ff739b3306"
     },
     "metrics_report.qmd": {
-      "checksum": "8d3e8cfbe08a540c4f595ac04421b4ff"
+      "checksum": "d72f6eb63629e9f5b102063d61237e99"
     },
-    "testcon.qmd": {
-      "checksum": "42411c37e1b10a6f064c6bfbe5447798"
+    "README.md": {
+      "checksum": "76c0093726425b6592add0d641428c77"
     }
   },
   "users": null
