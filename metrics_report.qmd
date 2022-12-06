@@ -1,0 +1,183 @@
+---
+title: "Public Sector Cheatsheet Metrics"
+format:
+  html:
+    code-fold: false
+    code-tools: true
+engine: knitr
+editor_options: 
+  chunk_output_type: console
+---
+
+## How many people are visiting the public sector cheatsheet?
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| error: false
+
+library(httr)
+library(tidyverse)
+library(lubridate)
+library(reactable)
+
+should_i_process <- FALSE # to make a conditional chunk later on
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+# content guid for the public sector cheatsheet
+content_guid <- "fb6b1150-b7de-465e-b64d-5e2b0a22eb87"
+
+# request info about content visits from the Connect API endpoint for content instrumentation
+my_response <- GET(
+  paste0(
+    Sys.getenv("CONNECT_SERVER"), # posit not rstudio
+    "/__api__/v1/instrumentation/content/visits?content_guid=", # endpoint for info on content visits
+    content_guid # unique ID for my content item
+  ),
+    add_headers(
+      Authorization = paste("Key", Sys.getenv("CONNECT_API_KEY"))
+    )
+)
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+if (my_response$status_code == 200) {
+  should_i_process <- TRUE # since we have results, let's flip this to true so that the next chunk will be rendered
+  my_results <- content(my_response)
+  message("response was 200, results generated")
+} else {
+  message(
+    paste0("response not 200, was: ", my_response$status_code)
+  )
+}
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| eval: !expr should_i_process
+
+# first, perhaps only, page of results
+visits_list <- my_results$results
+
+# is there only one page of results?
+do_pagination <- !is_null(my_results$paging[["next"]])
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| eval: !expr do_pagination
+
+# Continue to page through additional records
+# while we have a "next" reference
+while(!is.null(my_results$paging[["next"]])) {
+  
+  my_response <- GET(
+    my_results$paging[["next"]],
+    add_headers(
+      Authorization = paste("Key", Sys.getenv("CONNECT_API_KEY"))
+    )
+  )
+  my_results <- content(my_response)
+  visits_list <- c(visits_list, my_results$results)
+  
+}
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| eval: !expr should_i_process
+
+# make a tibble from the list of visits
+visits_log <- map_dfr(
+  visits_list,
+  ~ tibble(
+    user_guid = .x$user_guid,
+    time = .x$time,
+    contnet_id = .x$content_guid
+    )
+  )
+
+# missing user IDs means anonymous viewers, aka, outside Posit
+# let's add user names and refer to anons as customers
+visits_log <- visits_log |> 
+  mutate(visitor = if_else(!is.na(user_guid), "Posit", "Customer")) |> 
+  select(visitor, time)
+
+# convert to ET time and use just days, not hours and minutes
+visits_log <- visits_log |> 
+  mutate(
+    server_time_utc = time,
+    eastern_time = force_tz(time = ymd_hms(server_time_utc, tz = "America/New_York"), tzone = "GMT"),
+    hour = hour(eastern_time),
+    weekday = weekdays(eastern_time),
+    date = as.Date(eastern_time)
+  ) |>
+  select(-time) |> 
+  arrange(desc(eastern_time))
+
+```
+
+**`r nrow(visits_log)` visits since `r min(visits_log$date)`**
+
+<br>
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| eval: !expr should_i_process
+#| column: page
+#| fig-asp: .5625
+#| fig-width: 8
+#| out-width: 100%
+
+visits_log |> 
+  count(date, visitor) |> 
+  arrange(date, visitor) |> 
+  ggplot(aes(x = date, y = n, color = visitor)) +
+  geom_line(aes(group = visitor)) +
+  geom_point(aes(color = visitor)) +
+  labs(
+    title = "Page visits on the Public Sector Cheatsheet",
+    subtitle = "by day"
+  ) +
+  theme_minimal()
+
+```
+
+<br>
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| eval: !expr should_i_process
+#| column: page
+
+reactable(
+  visits_log,
+  filterable = TRUE,
+  sortable = TRUE
+)
+```
+
