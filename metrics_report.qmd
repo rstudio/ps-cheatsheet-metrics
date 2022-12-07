@@ -8,9 +8,8 @@ engine: knitr
 editor_options: 
   chunk_output_type: console
 ---
-data pulled at `r format(Sys.time(), tz='America/New_York', usetz = TRUE)`
+data pulled at `r format(Sys.time(), tz='America/New_York', usetz = TRUE)`  
 
-### How many people are visiting the public sector cheatsheet?
 
 ```{r}
 #| echo: false
@@ -149,7 +148,7 @@ Total visitors: `r nrow(visits_log)` visits since `r min(visits_log$date)`
 #| warning: false
 #| error: false
 #| eval: !expr should_i_process
-#| column: body
+#| column: page
 #| fig-width: 8
 #| fig-asp: 0.562
 #| out-width: 100%
@@ -165,17 +164,17 @@ visits_log |>
     x = NULL,
     y = NULL,
     title = "**Page visits on the Public Sector Cheatsheet by day**",
-    subtitle = "<span style ='color:#404041;'>Customers will be <b><span style = 'color:#EE6331;'>Anonymous visitors</span></b>. Posit employess visiting while logged<br>into Connect will be <b><span style = 'color:#447099;'>Named visitors</span></b>, otherwise they will be anonymous, too.</span>"
+    subtitle = "<span style ='color:#404041;'>Customers will be <b><span style = 'color:#EE6331;'>Anonymous visitors</span></b>. Posit employess visiting while<br>logged into Connect will be <b><span style = 'color:#447099;'>Named visitors</span></b>, otherwise they are anonymous, too.</span>"
   ) +
   scale_color_manual(
     limits = c("Anonymous", "Named"),
     values = c("#EE6331", "#447099"),
     guide = "none"
   ) +
-  theme_minimal() +
+  theme_minimal(base_size = 16) +
   theme(
     plot.title = element_markdown(lineheight = 1.6),
-    plot.subtitle = element_markdown(lineheight = 1.2)
+    plot.subtitle = element_markdown(lineheight = 1.2, size = 12)
   )
 
 ```
@@ -187,7 +186,7 @@ visits_log |>
 #| warning: false
 #| error: false
 #| eval: !expr should_i_process
-#| column: body
+#| column: page
 #| fig-asp: 0.4
 #| layout-nrow: 1
 
@@ -206,7 +205,7 @@ visits_log |>
     title = "**Total Visitors**"
   ) +
   coord_flip() +
-  theme_minimal(base_size = 21) +
+  theme_minimal(base_size = 18) +
   theme(
     plot.title = element_markdown(lineheight = 1.6),
     panel.grid = element_blank()
@@ -226,7 +225,7 @@ visits_log |>
     y = NULL,
     title = "**Visitors by Weekday**"
   ) +
-  theme_minimal(base_size = 21) +
+  theme_minimal(base_size = 18) +
   theme(
     plot.title = element_markdown(lineheight = 1.6),
     panel.grid = element_blank()
