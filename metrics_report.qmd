@@ -10,7 +10,6 @@ editor_options:
 ---
 data pulled at `r format(Sys.time(), tz='America/New_York', usetz = TRUE)`  
 
-
 ```{r}
 #| echo: false
 #| eval: true
