@@ -201,10 +201,13 @@ visits_log |>
   labs(
     x= NULL,
     y = NULL,
-    title = "**Total Visitors**"
+    title = paste0(
+      "**", nrow(visits_log), "**",
+      " Total Visitors"
+    )
   ) +
   coord_flip() +
-  theme_minimal(base_size = 18) +
+  theme_minimal(base_size = 21) +
   theme(
     plot.title = element_markdown(lineheight = 1.6),
     panel.grid = element_blank()
