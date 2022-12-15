@@ -162,7 +162,7 @@ visits_log |>
   labs(
     x = NULL,
     y = NULL,
-    title = "**Page visits on the Public Sector Cheatsheet by day**",
+    title = "**Page visits - Public Sector Cheatsheet by day**",
     subtitle = "<span style ='color:#404041;'>Customers will be <b><span style = 'color:#EE6331;'>Anonymous visitors</span></b>. Posit employess visiting while<br>logged into Connect will be <b><span style = 'color:#447099;'>Named visitors</span></b>, otherwise they are anonymous, too.</span>"
   ) +
   scale_color_manual(
