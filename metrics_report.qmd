@@ -156,19 +156,14 @@ Total visitors: `r nrow(visits_log)` visits since `r min(visits_log$date)`
 visits_log |> 
   count(date, visitor) |> 
   arrange(date, visitor) |> 
-  ggplot(aes(x = date, y = n, color = visitor)) +
-  geom_line(aes(group = visitor)) +
-  geom_point(aes(color = visitor)) +
+  ggplot(aes(x = date, y = n)) +
+  geom_col(fill = "#EE6331", alpha = .4) +
+  geom_smooth(aes(x = date, y = n),
+              se = FALSE, color = "#447099") +
   labs(
     x = NULL,
     y = NULL,
-    title = "**Page visits - Public Sector Cheatsheet by day**",
-    subtitle = "<span style ='color:#404041;'>Customers will be <b><span style = 'color:#EE6331;'>Anonymous visitors</span></b>. Posit employess visiting while<br>logged into Connect will be <b><span style = 'color:#447099;'>Named visitors</span></b>, otherwise they are anonymous, too.</span>"
-  ) +
-  scale_color_manual(
-    limits = c("Anonymous", "Named"),
-    values = c("#EE6331", "#447099"),
-    guide = "none"
+    title = "**Page visits - Public Sector Cheatsheet by day**"
   ) +
   theme_minimal(base_size = 16) +
   theme(
@@ -191,13 +186,7 @@ visits_log |>
 
 visits_log |>
   ggplot(aes(visitor)) +
-  geom_bar(aes(fill = visitor), width = .25) +
-  scale_fill_manual(
-    limits = c("Anonymous", "Named"),
-    values = c("#EE6331", "#447099"),
-    aesthetics = "fill",
-    guide = "none"
-  ) +
+  geom_bar(fill = "#404041", width = .25) +
   labs(
     x= NULL,
     y = NULL,
